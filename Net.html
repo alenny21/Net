@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Network+ Flashcards</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap');
+
+  :root {
+    --bg: #0f0f1a;
+    --card-front: #1e1e3a;
+    --card-back: #12293a;
+    --accent1: #ff6b6b;
+    --accent2: #4ecdc4;
+    --accent3: #ffe66d;
+    --accent4: #a29bfe;
+    --text: #f0f0f0;
+    --muted: #a0a0c0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-image: radial-gradient(circle at 20% 20%, #1a1a3a 0%, #0f0f1a 60%);
+  }
+
+  h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2.2rem;
+    color: var(--accent2);
+    text-align: center;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+    text-shadow: 0 0 20px rgba(78,205,196,0.4);
+  }
+
+  .subtitle {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  /* Category tabs */
+  .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 24px;
+    max-width: 700px;
+  }
+
+  .tab {
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 2px solid transparent;
+    background: #1e1e3a;
+    color: var(--muted);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    transition: all 0.2s;
+  }
+
+  .tab:hover { transform: translateY(-2px); }
+  .tab.active { color: #fff; border-color: currentColor; }
+  .tab.t0.active { background: #2a1a3a; color: var(--accent4); border-color: var(--accent4); }
+  .tab.t1.active { background: #1a2a3a; color: var(--accent2); border-color: var(--accent2); }
+  .tab.t2.active { background: #1a3a2a; color: #6bffb8; border-color: #6bffb8; }
+  .tab.t3.active { background: #3a1a1a; color: var(--accent1); border-color: var(--accent1); }
+  .tab.t4.active { background: #3a2a1a; color: var(--accent3); border-color: var(--accent3); }
+  .tab.t5.active { background: #2a3a1a; color: #b8ff6b; border-color: #b8ff6b; }
+
+  /* Progress */
+  .progress-bar-wrap {
+    width: 100%;
+    max-width: 500px;
+    background: #1e1e3a;
+    border-radius: 10px;
+    height: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+  .progress-bar {
+    height: 100%;
+    border-radius: 10px;
+    background: linear-gradient(90deg, var(--accent2), var(--accent4));
+    transition: width 0.4s ease;
+  }
+  .progress-text {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  /* Card */
+  .card-wrap {
+    perspective: 1200px;
+    width: 100%;
+    max-width: 500px;
+    height: 280px;
+    cursor: pointer;
+    margin-bottom: 24px;
+  }
+
+  .card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.55s cubic-bezier(0.4,0.2,0.2,1);
+    border-radius: 20px;
+  }
+
+  .card.flipped { transform: rotateY(180deg); }
+
+  .card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 28px;
+    text-align: center;
+    border: 2px solid rgba(255,255,255,0.07);
+  }
+
+  .card-front {
+    background: var(--card-front);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+  }
+
+  .card-back {
+    background: var(--card-back);
+    transform: rotateY(180deg);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  }
+
+  .card-label {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    opacity: 0.6;
+  }
+
+  .card-term {
+    font-family: 'Fredoka One', cursive;
+    font-size: 2rem;
+    line-height: 1.2;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+
+  .card-hint {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 12px;
+  }
+
+  .card-emoji {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+  }
+
+  .card-definition {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #e0e0f0;
+    margin-bottom: 10px;
+  }
+
+  .card-memory {
+    background: rgba(255,230,109,0.12);
+    border: 1px solid rgba(255,230,109,0.3);
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 0.82rem;
+    color: var(--accent3);
+    margin-top: 10px;
+    width: 100%;
+    text-align: left;
+  }
+  .card-memory b { display: block; margin-bottom: 3px; font-size: 0.72rem; letter-spacing: 1px; text-transform: uppercase; opacity: 0.7; }
+
+  /* Controls */
+  .controls {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .btn {
+    padding: 12px 28px;
+    border-radius: 50px;
+    border: none;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.5px;
+  }
+  .btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
+  .btn:active { transform: translateY(0); }
+
+  .btn-prev { background: #1e1e3a; color: var(--muted); border: 2px solid #2a2a4a; }
+  .btn-next { background: linear-gradient(135deg, var(--accent2), var(--accent4)); color: #0f0f1a; }
+  .btn-shuffle { background: #1e1e3a; color: var(--accent3); border: 2px solid rgba(255,230,109,0.3); font-size: 1.1rem; padding: 12px 16px; }
+
+  .card-counter {
+    font-size: 0.85rem;
+    color: var(--muted);
+    min-width: 60px;
+    text-align: center;
+    font-weight: 700;
+  }
+
+  .flip-hint {
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-align: center;
+    margin-top: -10px;
+    margin-bottom: 10px;
+  }
+
+  .category-badge {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  /* Keyboard hint */
+  .keyboard-hint {
+    display: flex;
+    gap: 16px;
+    margin-top: 6px;
+    color: var(--muted);
+    font-size: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .key {
+    background: #1e1e3a;
+    border: 1px solid #2a2a4a;
+    border-radius: 5px;
+    padding: 2px 7px;
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: #c0c0e0;
+  }
+</style>
+</head>
+<body>
+
+<h1>⚡ Network+ Flashcards</h1>
+<p class="subtitle">Tap card to flip • Study smarter, not harder</p>
+
+<div class="tabs" id="tabs"></div>
+
+<div class="progress-bar-wrap">
+  <div class="progress-bar" id="progressBar"></div>
+</div>
+<p class="progress-text" id="progressText"></p>
+
+<div class="card-wrap" id="cardWrap" onclick="flipCard()">
+  <div class="card" id="card">
+    <div class="card-face card-front" id="cardFront"></div>
+    <div class="card-face card-back" id="cardBack"></div>
+  </div>
+</div>
+
+<p class="flip-hint">👆 Tap card to reveal answer</p>
+
+<div class="controls">
+  <button class="btn btn-prev" onclick="prevCard()">← Prev</button>
+  <span class="card-counter" id="counter"></span>
+  <button class="btn btn-next" onclick="nextCard()">Next →</button>
+  <button class="btn btn-shuffle" onclick="shuffle()" title="Shuffle">🔀</button>
+</div>
+
+<div class="keyboard-hint">
+  <span><span class="key">Space</span> flip</span>
+  <span><span class="key">←</span> prev</span>
+  <span><span class="key">→</span> next</span>
+</div>
+
+<script>
+const categories = [
+  { name: "All Cards", short: "All", class: "t0" },
+  { name: "OSI & Protocols", short: "OSI", class: "t1" },
+  { name: "Ports", short: "Ports", class: "t2" },
+  { name: "Security", short: "Security", class: "t3" },
+  { name: "Routing & Switching", short: "Routing", class: "t4" },
+  { name: "Troubleshooting", short: "Trouble", class: "t5" },
+];
+
+const catColors = ["#a29bfe","#4ecdc4","#6bffb8","#ff6b6b","#ffe66d","#b8ff6b"];
+
+const allCards = [
+  // OSI & Protocols
+  { cat: 1, term: "OSI Model", emoji: "📚", def: "A 7-layer framework describing how data travels across a network.", memory: "Please Do Not Throw Sausage Pizza Away\n(Physical, Data Link, Network, Transport, Session, Presentation, Application)" },
+  { cat: 1, term: "Layer 1 – Physical", emoji: "🔌", def: "Transmits raw bits over cables/signals. Devices: hubs, repeaters, cables.", memory: "Think: actual wires, connectors, electrical signals" },
+  { cat: 1, term: "Layer 2 – Data Link", emoji: "🔗", def: "Uses MAC addresses, frames data, handles error detection. Devices: switches, bridges.", memory: "MAC = Layer 2. Switches live here." },
+  { cat: 1, term: "Layer 3 – Network", emoji: "🗺️", def: "Handles IP addressing and routing. Devices: routers. PDU = Packet.", memory: "IP addresses = Layer 3. Routers live here." },
+  { cat: 1, term: "Layer 4 – Transport", emoji: "🚚", def: "End-to-end delivery. TCP (reliable) vs UDP (fast). PDU = Segment.", memory: "TCP = trustworthy. UDP = ultrafast." },
+  { cat: 1, term: "TCP vs UDP", emoji: "⚖️", def: "TCP = reliable, connection-oriented, slower. UDP = fast, connectionless, no guarantees.", memory: "TCP = phone call (two-way). UDP = texting (fire and forget)." },
+  { cat: 1, term: "DHCP", emoji: "🎁", def: "Automatically assigns IP address, subnet mask, gateway, and DNS to devices.", memory: "DORA: Discover → Offer → Request → Acknowledge" },
+  { cat: 1, term: "DNS", emoji: "📖", def: "Translates domain names (google.com) into IP addresses.", memory: "DNS = phone book of the internet" },
+  { cat: 1, term: "APIPA", emoji: "🚨", def: "169.254.x.x — auto-assigned when DHCP fails. Local only, no internet.", memory: "See 169.254? = DHCP is broken!" },
+  { cat: 1, term: "NAT / PAT", emoji: "🔄", def: "NAT translates private IPs to public. PAT uses port numbers to share one public IP.", memory: "NAT = one-to-one. PAT = many-to-one using ports." },
+  { cat: 1, term: "Private IPv4 Ranges", emoji: "🏠", def: "10.0.0.0/8 | 172.16.0.0/12 | 192.168.0.0/16 — not routable on the internet.", memory: "10, 172.16, 192.168 = HOME addresses" },
+  { cat: 1, term: "Unicast", emoji: "👤", def: "One-to-one communication between a single sender and single receiver.", memory: "Uni = one. Like a direct message." },
+  { cat: 1, term: "Broadcast", emoji: "📢", def: "One-to-all. Sends to every device on the network. IPv4 only.", memory: "Like yelling in a room — everyone hears it." },
+  { cat: 1, term: "Multicast", emoji: "👥", def: "One-to-many. Sends to a specific group of devices.", memory: "Like a group chat — only subscribers get it." },
+  { cat: 1, term: "Anycast", emoji: "🎯", def: "One-to-nearest. Packet sent to the nearest member of a group.", memory: "ANY = nearest one wins. Used in DNS/IPv6." },
+  { cat: 1, term: "NTP", emoji: "⏰", def: "Network Time Protocol. Syncs clocks across all devices on a network.", memory: "NTP = Network Time Police 🕐 Everyone must agree on time!" },
+  { cat: 1, term: "SNMP", emoji: "📊", def: "Simple Network Management Protocol. Monitors network devices. Ports 161/162.", memory: "SNMP = Spy on your Network's Machines and Printers" },
+  { cat: 1, term: "VPN", emoji: "🔒", def: "Virtual Private Network. Creates an encrypted tunnel over the public internet.", memory: "VPN = invisible private road on a public highway" },
+
+  // PORTS
+  { cat: 2, term: "HTTP – Port 80", emoji: "🌐", def: "Unencrypted web traffic. Not secure — data can be read by anyone.", memory: "80 = open door, no lock 🚪" },
+  { cat: 2, term: "HTTPS – Port 443", emoji: "🔐", def: "Encrypted web traffic using TLS. The padlock in your browser.", memory: "443 = locked door 🔒 Always prefer HTTPS!" },
+  { cat: 2, term: "SSH – Port 22", emoji: "💻", def: "Secure Shell. Encrypted remote command-line access to devices.", memory: "22 = Secure. Always use SSH, never Telnet!" },
+  { cat: 2, term: "Telnet – Port 23", emoji: "⚠️", def: "Unencrypted remote access. Insecure — never use on production networks.", memory: "23 = one more than SSH but way less safe!" },
+  { cat: 2, term: "FTP – Ports 20/21", emoji: "📁", def: "File Transfer Protocol. Port 20 = data, Port 21 = control. Unencrypted.", memory: "FTP = Freely Transmits Passwords (insecure!)" },
+  { cat: 2, term: "SFTP – Port 22", emoji: "📁", def: "Secure FTP over SSH. Same port as SSH (22). Encrypted file transfer.", memory: "SFTP = Safe FTP. Shares port 22 with SSH." },
+  { cat: 2, term: "SMTP – Port 25", emoji: "✉️", def: "Simple Mail Transfer Protocol. Used to SEND email.", memory: "SMTP = Sending Mail To People" },
+  { cat: 2, term: "DNS – Port 53", emoji: "📖", def: "Domain Name System. Uses both TCP and UDP on port 53.", memory: "53 = Five-Three = Find The name!" },
+  { cat: 2, term: "DHCP – Ports 67/68", emoji: "🎁", def: "Port 67 = server listens. Port 68 = client listens.", memory: "6-7 for server, 6-8 for client" },
+  { cat: 2, term: "POP3 – Port 110", emoji: "📬", def: "Post Office Protocol. Downloads email from server (deletes from server).", memory: "POP3 = Pulls Off Permanently" },
+  { cat: 2, term: "IMAP – Port 143", emoji: "📬", def: "Internet Message Access Protocol. Views email on server (keeps it there).", memory: "IMAP = I May Access Permanently (stays on server)" },
+  { cat: 2, term: "SNMP – Ports 161/162", emoji: "📊", def: "161 = queries to devices. 162 = trap alerts sent to manager.", memory: "161 ask, 162 alert!" },
+  { cat: 2, term: "LDAP – Port 389", emoji: "🗂️", def: "Lightweight Directory Access Protocol. Queries user directories like Active Directory.", memory: "LDAP = Look up Directory And People" },
+  { cat: 2, term: "HTTPS – Port 443", emoji: "🔐", def: "Secure web. TLS encrypted. The gold standard for web traffic.", memory: "4-4-3 = For For Security!" },
+  { cat: 2, term: "RDP – Port 3389", emoji: "🖥️", def: "Remote Desktop Protocol. GUI-based remote access to Windows computers.", memory: "3389 = Big number for a BIG screen!" },
+  { cat: 2, term: "Syslog – Port 514", emoji: "📋", def: "Sends device log messages to a central log server. UDP.", memory: "514 = Five-One-Four = Forward Information About errors" },
+
+  // SECURITY
+  { cat: 3, term: "CIA Triad", emoji: "🛡️", def: "Confidentiality (keep secrets), Integrity (no tampering), Availability (always accessible).", memory: "C = Can't see it. I = Can't change it. A = Can always get it." },
+  { cat: 3, term: "AAA", emoji: "🔑", def: "Authentication (who are you?), Authorization (what can you do?), Accounting (what did you do?).", memory: "AAA = Who? What? When? — like a security guard log." },
+  { cat: 3, term: "Zero Trust", emoji: "🚫", def: "Never trust, always verify. Every user/device must authenticate regardless of location.", memory: "Even your CEO gets checked at the door!" },
+  { cat: 3, term: "Defense in Depth", emoji: "🏰", def: "Multiple layers of security so if one fails, others protect you.", memory: "Like a castle: moat → walls → guards → vault" },
+  { cat: 3, term: "Phishing", emoji: "🎣", def: "Fake emails tricking users into giving up credentials or clicking malicious links.", memory: "PHISHING = fake bait to catch you like a fish 🐟" },
+  { cat: 3, term: "Spear Phishing", emoji: "🎯", def: "Targeted phishing attack aimed at a specific person or organization.", memory: "Spear = more precise than a fishing rod" },
+  { cat: 3, term: "Ransomware", emoji: "💰", def: "Malware that encrypts your files and demands payment to unlock them.", memory: "Ransomware = digital kidnapping of your files" },
+  { cat: 3, term: "ARP Poisoning", emoji: "☠️", def: "Attacker sends fake ARP replies to link their MAC to another device's IP. Enables MITM.", memory: "ARP Poisoning = lying to the network's phone book" },
+  { cat: 3, term: "MAC Flooding", emoji: "🌊", def: "Overloads a switch's MAC table, causing it to flood all traffic everywhere.", memory: "Flood the table → switch goes dumb → attacker sniffs all traffic" },
+  { cat: 3, term: "VLAN Hopping", emoji: "🦘", def: "Attacker gains access to traffic in other VLANs using switch spoofing or double tagging.", memory: "Hopping over fences that should keep VLANs separate" },
+  { cat: 3, term: "DoS vs DDoS", emoji: "💥", def: "DoS = one attacker floods a target. DDoS = many attackers (botnet) flood a target.", memory: "DoS = one bully. DDoS = a mob of bullies." },
+  { cat: 3, term: "MITM Attack", emoji: "👤", def: "Man-in-the-Middle. Attacker secretly intercepts communication between two parties.", memory: "Like someone secretly reading your mail before delivering it" },
+  { cat: 3, term: "WPA2 vs WPA3", emoji: "📶", def: "WPA2 uses AES encryption. WPA3 uses SAE (stronger). WEP is deprecated — never use it.", memory: "WPA3 > WPA2 > WPA > WEP (dead!)" },
+  { cat: 3, term: "RADIUS", emoji: "🔐", def: "Centralized authentication server. UDP port 1812. Used for VPN and 802.1X.", memory: "RADIUS = Really Authorizes Devices In Under a Second" },
+  { cat: 3, term: "TACACS+", emoji: "🔐", def: "Cisco's AAA protocol. TCP port 49. More granular than RADIUS.", memory: "TACACS+ = Tightly Authorizes Cisco Access Controls" },
+  { cat: 3, term: "NAC / 802.1X", emoji: "🚪", def: "Network Access Control. Validates a device before allowing it on the network.", memory: "Bouncer at the door — must show ID before entering!" },
+
+  // ROUTING & SWITCHING
+  { cat: 4, term: "VLAN", emoji: "🏢", def: "Virtual LAN. Logically separates a network at Layer 2. Each VLAN = separate broadcast domain.", memory: "VLANs = walls between departments on the same building" },
+  { cat: 4, term: "Trunk Port", emoji: "🌳", def: "Carries multiple VLANs between switches using 802.1Q tagging.", memory: "Trunk = highway carrying all VLAN lanes" },
+  { cat: 4, term: "Access Port", emoji: "🚪", def: "Connects to an end device. Carries traffic for ONE VLAN only.", memory: "Access = single-lane road to your desk" },
+  { cat: 4, term: "STP", emoji: "🔄", def: "Spanning Tree Protocol. Prevents Layer 2 loops by blocking redundant paths.", memory: "STP = Stop The Pain (of network loops!)" },
+  { cat: 4, term: "RIP", emoji: "🐢", def: "Distance-vector protocol. Uses hop count as metric. Max 15 hops. Slow convergence.", memory: "RIP = Really Inefficient Protocol (old and slow)" },
+  { cat: 4, term: "OSPF", emoji: "⚡", def: "Link-state protocol. Uses cost (bandwidth). Fast convergence. Good for large networks.", memory: "OSPF = Optimally Sends Packets Fast" },
+  { cat: 4, term: "BGP", emoji: "🌍", def: "Path-vector protocol. Used between ISPs on the internet. Uses AS numbers.", memory: "BGP = Big Global Protocol (runs the internet!)" },
+  { cat: 4, term: "EIGRP", emoji: "🎯", def: "Cisco hybrid protocol. Uses bandwidth + delay as metric. Fast convergence.", memory: "EIGRP = Extremely Intelligent, Great Routing Protocol" },
+  { cat: 4, term: "Administrative Distance", emoji: "📏", def: "Trustworthiness of a routing source. LOWER = more preferred. Connected=0, Static=1, EIGRP=90, OSPF=110, RIP=120.", memory: "AD = like golf — lower score wins! 🏌️" },
+  { cat: 4, term: "HSRP / VRRP / GLBP", emoji: "🔁", def: "First Hop Redundancy Protocols. Provide a virtual gateway IP so routers can failover.", memory: "HSRP=Cisco, VRRP=Open Standard, GLBP=load balances too" },
+  { cat: 4, term: "PoE Standards", emoji: "⚡", def: "802.3af = 15.4W | 802.3at (PoE+) = 25.5W | 802.3bt (PoE++) = up to 90W", memory: "af=a few watts, at=a lot, bt=be tremendous!" },
+  { cat: 4, term: "LACP / 802.3ad", emoji: "🔗", def: "Link Aggregation. Combines multiple physical links into one logical link for speed + redundancy.", memory: "LACP = Like A Chain of Ports" },
+
+  // TROUBLESHOOTING
+  { cat: 5, term: "6-Step Troubleshooting", emoji: "🔧", def: "1.Identify 2.Theory 3.Test 4.Plan 5.Verify 6.Document", memory: "IT's Pretty Technical, Verify Docs\n(Identify, Theory, Test, Plan, Verify, Document)" },
+  { cat: 5, term: "CRC Errors", emoji: "📡", def: "Cyclic Redundancy Check errors. Caused by bad cables, interference, or faulty hardware.", memory: "CRC = Can't Receive Cleanly → check the cable!" },
+  { cat: 5, term: "Late Collisions", emoji: "💥", def: "Collisions detected after the first 64 bytes. Almost always caused by duplex mismatch.", memory: "Late collision = duplex mismatch. Check both ends!" },
+  { cat: 5, term: "Link Flapping", emoji: "🦋", def: "Interface repeatedly going up/down. Usually bad cable, port, or transceiver (SFP).", memory: "Flapping = unstable connection — swap the cable first!" },
+  { cat: 5, term: "ping", emoji: "🏓", def: "Tests basic connectivity to another device. Shows latency and packet loss.", memory: "ping = Are you there? pong = Yes I am!" },
+  { cat: 5, term: "tracert / traceroute", emoji: "🗺️", def: "Shows the path packets take to a destination. Identifies where delays or drops occur.", memory: "tracert = follow the breadcrumbs to the problem" },
+  { cat: 5, term: "ipconfig / ifconfig", emoji: "💻", def: "Shows IP configuration. ipconfig /release and /renew to reset DHCP on Windows.", memory: "ipconfig = your network ID card" },
+  { cat: 5, term: "nslookup", emoji: "🔍", def: "Queries DNS servers. Use to test if DNS is resolving names correctly.", memory: "nslookup = 'Hey DNS, what's the IP for this name?'" },
+  { cat: 5, term: "netstat", emoji: "📊", def: "Shows active connections and listening ports. Good for spotting unusual connections.", memory: "netstat = network status report card" },
+  { cat: 5, term: "Wireshark", emoji: "🦈", def: "Packet capture tool. Lets you see every packet on the network in detail.", memory: "Wireshark = X-ray for your network traffic" },
+  { cat: 5, term: "RPO vs RTO", emoji: "⏱️", def: "RPO = max DATA loss acceptable (backup frequency). RTO = max DOWNTIME acceptable.", memory: "RPO = Recovery Point (data). RTO = Recovery Time (downtime)." },
+  { cat: 5, term: "Hot / Warm / Cold Site", emoji: "🏢", def: "Hot = fully ready (expensive). Warm = partial setup. Cold = empty building (cheapest).", memory: "Hot = ready NOW. Warm = almost ready. Cold = start from scratch." },
+  { cat: 5, term: "Full / Incremental / Differential", emoji: "💾", def: "Full = everything. Incremental = changes since last backup. Differential = changes since last full.", memory: "Full=slow backup fast restore. Incremental=fast backup slow restore." },
+  { cat: 5, term: "TDR / OTDR", emoji: "📏", def: "Time Domain Reflectometer. Finds breaks or faults in cables. OTDR is for fiber.", memory: "TDR = finds where the cable broke like sonar" },
+];
+
+let currentCategory = 0;
+let currentIndex = 0;
+let isFlipped = false;
+let deck = [];
+
+function buildDeck() {
+  if (currentCategory === 0) {
+    deck = [...allCards];
+  } else {
+    deck = allCards.filter(c => c.cat === currentCategory);
+  }
+}
+
+function renderTabs() {
+  const tabsEl = document.getElementById('tabs');
+  tabsEl.innerHTML = '';
+  categories.forEach((cat, i) => {
+    const btn = document.createElement('button');
+    btn.className = `tab ${cat.class} ${i === currentCategory ? 'active' : ''}`;
+    btn.textContent = cat.short;
+    btn.onclick = () => { currentCategory = i; currentIndex = 0; isFlipped = false; buildDeck(); renderTabs(); renderCard(); };
+    tabsEl.appendChild(btn);
+  });
+}
+
+function renderCard() {
+  const card = document.getElementById('card');
+  card.className = 'card' + (isFlipped ? ' flipped' : '');
+
+  const c = deck[currentIndex];
+  const catName = categories[c.cat].name;
+  const color = catColors[c.cat];
+
+  document.getElementById('cardFront').innerHTML = `
+    <span class="category-badge" style="background:${color}22;color:${color};border:1px solid ${color}44">${catName}</span>
+    <div class="card-emoji">${c.emoji}</div>
+    <div class="card-term">${c.term}</div>
+    <div class="card-hint">Tap to see definition 👇</div>
+  `;
+
+  const memLines = c.memory.split('\n');
+  const memHTML = memLines.map(l => `<span>${l}</span>`).join('<br>');
+
+  document.getElementById('cardBack').innerHTML = `
+    <span class="category-badge" style="background:${color}22;color:${color};border:1px solid ${color}44">${c.term}</span>
+    <div class="card-definition">${c.def}</div>
+    <div class="card-memory"><b>🧠 Memory Trick</b>${memHTML}</div>
+  `;
+
+  const total = deck.length;
+  const pct = ((currentIndex + 1) / total) * 100;
+  document.getElementById('progressBar').style.width = pct + '%';
+  document.getElementById('progressText').textContent = `Card ${currentIndex + 1} of ${total}`;
+  document.getElementById('counter').textContent = `${currentIndex + 1} / ${total}`;
+}
+
+function flipCard() {
+  isFlipped = !isFlipped;
+  document.getElementById('card').className = 'card' + (isFlipped ? ' flipped' : '');
+}
+
+function nextCard() {
+  isFlipped = false;
+  setTimeout(() => {
+    currentIndex = (currentIndex + 1) % deck.length;
+    renderCard();
+  }, 150);
+  document.getElementById('card').className = 'card';
+}
+
+function prevCard() {
+  isFlipped = false;
+  setTimeout(() => {
+    currentIndex = (currentIndex - 1 + deck.length) % deck.length;
+    renderCard();
+  }, 150);
+  document.getElementById('card').className = 'card';
+}
+
+function shuffle() {
+  isFlipped = false;
+  for (let i = deck.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [deck[i], deck[j]] = [deck[j], deck[i]];
+  }
+  currentIndex = 0;
+  renderCard();
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); flipCard(); }
+  if (e.key === 'ArrowRight') nextCard();
+  if (e.key === 'ArrowLeft') prevCard();
+});
+
+buildDeck();
+renderTabs();
+renderCard();
+</script>
+</body>
+</html>
