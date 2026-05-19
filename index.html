@@ -757,7 +757,215 @@
   answer: "DHCP",
   explain: "DHCP automatically assigns IP addresses and network settings."
 },
-      {
+   {
+  q: "Which protocol converts domain names into IP addresses?",
+  choices: ["DHCP", "DNS", "SNMP", "FTP"],
+  answer: "DNS",
+  explain: "DNS resolves human-readable names into IP addresses."
+},
+
+{
+  q: "Which protocol securely transfers files using SSH?",
+  choices: ["FTP", "TFTP", "SFTP", "SMTP"],
+  answer: "SFTP",
+  explain: "SFTP securely transfers files using SSH on port 22."
+},
+
+{
+  q: "Which device connects multiple networks together?",
+  choices: ["Switch", "Hub", "Router", "Repeater"],
+  answer: "Router",
+  explain: "Routers connect and route traffic between different networks."
+},
+
+{
+  q: "What is the default subnet mask for a /24 network?",
+  choices: ["255.255.255.0", "255.255.0.0", "255.0.0.0", "255.255.255.240"],
+  answer: "255.255.255.0",
+  explain: "A /24 network uses the subnet mask 255.255.255.0."
+},
+
+{
+  q: "Which protocol is used to automatically synchronize clocks?",
+  choices: ["DNS", "NTP", "SNMP", "SSH"],
+  answer: "NTP",
+  explain: "NTP synchronizes clocks across network devices."
+},
+
+{
+  q: "Which layer of the OSI model uses MAC addresses?",
+  choices: ["Physical", "Data Link", "Transport", "Session"],
+  answer: "Data Link",
+  explain: "Layer 2 uses MAC addresses for local communication."
+},
+
+{
+  q: "Which protocol uses port 3389?",
+  choices: ["SSH", "FTP", "RDP", "DNS"],
+  answer: "RDP",
+  explain: "RDP uses TCP port 3389 for remote desktop access."
+},
+
+{
+  q: "What is the purpose of STP?",
+  choices: ["Assign IP addresses", "Prevent loops", "Encrypt traffic", "Resolve DNS"],
+  answer: "Prevent loops",
+  explain: "STP blocks redundant Layer 2 paths to prevent loops."
+},
+
+{
+  q: "Which protocol sends email?",
+  choices: ["SMTP", "POP3", "IMAP", "SNMP"],
+  answer: "SMTP",
+  explain: "SMTP is used to send email messages."
+},
+
+{
+  q: "Which protocol retrieves email?",
+  choices: ["SMTP", "POP3", "HTTPS", "SSH"],
+  answer: "POP3",
+  explain: "POP3 retrieves email from a mail server."
+},
+
+{
+  q: "Which protocol securely encrypts web traffic?",
+  choices: ["HTTP", "HTTPS", "FTP", "SNMP"],
+  answer: "HTTPS",
+  explain: "HTTPS encrypts web traffic using SSL/TLS."
+},
+
+{
+  q: "What is the purpose of a VPN?",
+  choices: ["Increase Wi-Fi speed", "Create an encrypted tunnel", "Assign IP addresses", "Resolve DNS"],
+  answer: "Create an encrypted tunnel",
+  explain: "VPNs securely encrypt traffic across public networks."
+},
+
+{
+  q: "Which type of fiber supports longer distances?",
+  choices: ["Multimode", "Single-mode", "Coaxial", "UTP"],
+  answer: "Single-mode",
+  explain: "Single-mode fiber supports long-distance communication."
+},
+
+{
+  q: "Which wireless standard is Wi-Fi 6?",
+  choices: ["802.11n", "802.11ac", "802.11ax", "802.11g"],
+  answer: "802.11ax",
+  explain: "Wi-Fi 6 is based on the 802.11ax standard."
+},
+
+{
+  q: "Which protocol monitors network devices?",
+  choices: ["SNMP", "SMTP", "FTP", "DNS"],
+  answer: "SNMP",
+  explain: "SNMP is used to monitor and manage network devices."
+},
+
+{
+  q: "What does QoS do?",
+  choices: ["Assigns IP addresses", "Prioritizes traffic", "Encrypts data", "Blocks malware"],
+  answer: "Prioritizes traffic",
+  explain: "QoS prioritizes important traffic like VoIP and video."
+},
+
+{
+  q: "What does ACL stand for?",
+  choices: ["Access Control List", "Application Core Link", "Advanced Command Layer", "Access Core LAN"],
+  answer: "Access Control List",
+  explain: "ACLs filter traffic using permit and deny rules."
+},
+
+{
+  q: "Which protocol resolves MAC addresses from IP addresses?",
+  choices: ["DNS", "ARP", "DHCP", "SNMP"],
+  answer: "ARP",
+  explain: "ARP maps IP addresses to MAC addresses."
+},
+
+{
+  q: "What is the purpose of a default gateway?",
+  choices: ["Resolve DNS", "Provide internet access outside the subnet", "Assign MAC addresses", "Encrypt traffic"],
+  answer: "Provide internet access outside the subnet",
+  explain: "The default gateway routes traffic outside the local network."
+},
+
+{
+  q: "Which port does DNS primarily use?",
+  choices: ["22", "53", "80", "443"],
+  answer: "53",
+  explain: "DNS mainly uses port 53 over UDP and sometimes TCP."
+},
+
+{
+  q: "Which protocol uses port 161?",
+  choices: ["SNMP", "FTP", "HTTPS", "SSH"],
+  answer: "SNMP",
+  explain: "SNMP commonly uses UDP port 161."
+},
+
+{
+  q: "What does a switch primarily use to forward traffic?",
+  choices: ["IP addresses", "Port numbers", "MAC addresses", "Hostnames"],
+  answer: "MAC addresses",
+  explain: "Switches forward frames using MAC addresses."
+},
+
+{
+  q: "Which protocol is connectionless?",
+  choices: ["TCP", "UDP", "HTTPS", "SSH"],
+  answer: "UDP",
+  explain: "UDP is connectionless and faster than TCP."
+},
+
+{
+  q: "Which command shows IP configuration in Windows?",
+  choices: ["ping", "ipconfig", "tracert", "show ip route"],
+  answer: "ipconfig",
+  explain: "ipconfig displays IP settings on Windows devices."
+},
+
+{
+  q: "Which command traces the path packets take?",
+  choices: ["ping", "ipconfig", "tracert", "nslookup"],
+  answer: "tracert",
+  explain: "tracert displays the path packets take through the network."
+},
+
+{
+  q: "What is the purpose of DHCP reservation?",
+  choices: ["Encrypt traffic", "Assign permanent IPs based on MAC", "Block malware", "Create VLANs"],
+  answer: "Assign permanent IPs based on MAC",
+  explain: "DHCP reservations assign the same IP address to a specific MAC address."
+},
+
+{
+  q: "Which protocol secures remote command-line access?",
+  choices: ["Telnet", "SSH", "HTTP", "FTP"],
+  answer: "SSH",
+  explain: "SSH securely encrypts remote terminal sessions."
+},
+
+{
+  q: "What is a broadcast?",
+  choices: ["One-to-one communication", "One-to-all communication", "One-to-nearest communication", "One-to-many communication"],
+  answer: "One-to-all communication",
+  explain: "Broadcast traffic is sent to every device in the broadcast domain."
+},
+
+{
+  q: "Which wireless frequency usually has more interference?",
+  choices: ["5 GHz", "6 GHz", "2.4 GHz", "60 GHz"],
+  answer: "2.4 GHz",
+  explain: "2.4 GHz has more interference because many devices use it."
+},
+
+{
+  q: "Which protocol provides directory services?",
+  choices: ["DNS", "LDAP", "SNMP", "NTP"],
+  answer: "LDAP",
+  explain: "LDAP stores and retrieves directory information."
+},   {
   q: "Which port does SSH use?",
   choices: ["21", "22", "23", "25"],
   answer: "22",
