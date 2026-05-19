@@ -1097,8 +1097,6 @@ button:hover,
     <tr><td>8443</td><td>TCP</td><td>HTTPS Alternate</td><td>Alternative secure web traffic</td></tr>
   </tbody>
 </table>
-            <tbody id="portsTable"></tbody>
-          </table>
         </div>
 
         <div class="panel">
@@ -1916,16 +1914,27 @@ button:hover,
     }
 
     function renderQuiz() {
-      answered = false;
-      const item = quizQuestions[currentQuiz];
-      document.getElementById("quizProgress").textContent = `Question ${currentQuiz + 1} / ${quizQuestions.length}`;
-      document.getElementById("quizScore").textContent = `Score: ${score}`;
-      document.getElementById("quizQuestion").textContent = item.q;
-      document.getElementById("quizFeedback").textContent = "Pick the best answer.";
-      document.getElementById("quizChoices").innerHTML = item.choices.map(choice =>
-        `<button class="choice-btn" onclick="checkAnswer(this, '${choice.replace(/'/g, "\'")}')">${choice}</button>`
-      ).join("");
-    }
+  answered = false;
+  const item = quizQuestions[currentQuiz];
+
+  document.getElementById("quizProgress").textContent =
+    `Question ${currentQuiz + 1} / ${quizQuestions.length}`;
+
+  document.getElementById("quizScore").textContent = `Score: ${score}`;
+  document.getElementById("quizQuestion").textContent = item.q;
+  document.getElementById("quizFeedback").textContent = "Pick the best answer.";
+
+  const quizChoices = document.getElementById("quizChoices");
+  quizChoices.innerHTML = "";
+
+  item.choices.forEach(choice => {
+    const button = document.createElement("button");
+    button.className = "choice-btn";
+    button.textContent = choice;
+    button.addEventListener("click", () => checkAnswer(button, choice));
+    quizChoices.appendChild(button);
+  });
+}
 
     function checkAnswer(button, choice) {
       if (answered) return;
@@ -2005,15 +2014,17 @@ button:hover,
       VPN: "Virtual Private Network",
       WPA3: "Wi-Fi Protected Access 3"
     };
+function nextFlashcard(event) {
+  if (event) event.stopPropagation();
+  currentFlash = (currentFlash + 1) % flashcards.length;
+  renderFlashcard();
+}
 
-    document.getElementById("portsTable").innerHTML = ports
-      .map(row => `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[2]}</td><td>${row[3]}</td></tr>`)
-      .join("");
-
-    document.getElementById("acronyms").innerHTML = Object.entries(acronyms)
-      .map(([key, value]) => `<b>${key}</b><span>${value}</span>`)
-      .join("");
-
+function prevFlashcard(event) {
+  if (event) event.stopPropagation();
+  currentFlash = (currentFlash - 1 + flashcards.length) % flashcards.length;
+  renderFlashcard();
+}
     renderFlashcard();
     renderQuiz();
   </script>
