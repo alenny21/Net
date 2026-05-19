@@ -514,7 +514,6 @@
     <main id="home">
       <section class="topbar">
         <div>
-          <div class="eyebrow">⚡ ADHD-friendly study mode</div>
           <h1><span class="gradient-text">CompTIA</span> <span style="color: var(--cyan)">Network+</span></h1>
           <p class="subtitle">N10-009 Study Hub — learn, practice, review, and stop letting subnetting bully you.</p>
         </div>
@@ -556,15 +555,184 @@
         <div class="panel" id="ports">
           <h3>🎯 Common Ports</h3>
           <table>
-            <thead><tr><th>Port</th><th>Transport</th><th>Protocol</th><th>Use</th></tr></thead>
+  <thead>
+    <tr>
+      <th>Port</th>
+      <th>Transport</th>
+      <th>Protocol</th>
+      <th>Use</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr><td>20</td><td>TCP</td><td>FTP Data</td><td>File transfer data</td></tr>
+    <tr><td>21</td><td>TCP</td><td>FTP Control</td><td>File transfer control</td></tr>
+    <tr><td>22</td><td>TCP</td><td>SSH / SFTP</td><td>Secure remote login and secure file transfer</td></tr>
+    <tr><td>23</td><td>TCP</td><td>Telnet</td><td>Insecure remote terminal</td></tr>
+    <tr><td>25</td><td>TCP</td><td>SMTP</td><td>Send email</td></tr>
+    <tr><td>49</td><td>TCP</td><td>TACACS+</td><td>Cisco AAA authentication</td></tr>
+    <tr><td>53</td><td>UDP/TCP</td><td>DNS</td><td>Name resolution</td></tr>
+    <tr><td>67</td><td>UDP</td><td>DHCP Server</td><td>DHCP server communication</td></tr>
+    <tr><td>68</td><td>UDP</td><td>DHCP Client</td><td>DHCP client communication</td></tr>
+    <tr><td>69</td><td>UDP</td><td>TFTP</td><td>Simple file transfer</td></tr>
+    <tr><td>80</td><td>TCP</td><td>HTTP</td><td>Web traffic</td></tr>
+    <tr><td>88</td><td>TCP/UDP</td><td>Kerberos</td><td>Authentication</td></tr>
+    <tr><td>110</td><td>TCP</td><td>POP3</td><td>Retrieve email</td></tr>
+    <tr><td>111</td><td>TCP/UDP</td><td>RPC</td><td>Remote Procedure Calls</td></tr>
+    <tr><td>119</td><td>TCP</td><td>NNTP</td><td>Network news transfer</td></tr>
+    <tr><td>123</td><td>UDP</td><td>NTP</td><td>Time synchronization</td></tr>
+    <tr><td>135</td><td>TCP</td><td>RPC Endpoint Mapper</td><td>Microsoft RPC services</td></tr>
+    <tr><td>137</td><td>UDP</td><td>NetBIOS Name</td><td>NetBIOS naming</td></tr>
+    <tr><td>138</td><td>UDP</td><td>NetBIOS Datagram</td><td>NetBIOS datagrams</td></tr>
+    <tr><td>139</td><td>TCP</td><td>NetBIOS Session</td><td>Windows file sharing</td></tr>
+    <tr><td>143</td><td>TCP</td><td>IMAP</td><td>Retrieve email</td></tr>
+    <tr><td>161</td><td>UDP</td><td>SNMP</td><td>Network monitoring</td></tr>
+    <tr><td>162</td><td>UDP</td><td>SNMP Trap</td><td>SNMP alerts</td></tr>
+    <tr><td>179</td><td>TCP</td><td>BGP</td><td>Routing protocol</td></tr>
+    <tr><td>389</td><td>TCP/UDP</td><td>LDAP</td><td>Directory services</td></tr>
+    <tr><td>443</td><td>TCP</td><td>HTTPS</td><td>Secure web traffic</td></tr>
+    <tr><td>445</td><td>TCP</td><td>SMB</td><td>Windows file sharing</td></tr>
+    <tr><td>465</td><td>TCP</td><td>SMTPS</td><td>Secure email sending</td></tr>
+    <tr><td>500</td><td>UDP</td><td>IKE</td><td>IPsec VPN negotiation</td></tr>
+    <tr><td>514</td><td>UDP</td><td>Syslog</td><td>Logging</td></tr>
+    <tr><td>520</td><td>UDP</td><td>RIP</td><td>Routing Information Protocol</td></tr>
+    <tr><td>546</td><td>UDP</td><td>DHCPv6 Client</td><td>IPv6 DHCP client</td></tr>
+    <tr><td>547</td><td>UDP</td><td>DHCPv6 Server</td><td>IPv6 DHCP server</td></tr>
+    <tr><td>587</td><td>TCP</td><td>SMTP Submission</td><td>Secure email submission</td></tr>
+    <tr><td>631</td><td>TCP</td><td>IPP</td><td>Internet Printing Protocol</td></tr>
+    <tr><td>636</td><td>TCP</td><td>LDAPS</td><td>Secure LDAP</td></tr>
+    <tr><td>989</td><td>TCP</td><td>FTPS Data</td><td>Secure FTP data</td></tr>
+    <tr><td>990</td><td>TCP</td><td>FTPS Control</td><td>Secure FTP control</td></tr>
+    <tr><td>993</td><td>TCP</td><td>IMAPS</td><td>Secure IMAP</td></tr>
+    <tr><td>995</td><td>TCP</td><td>POP3S</td><td>Secure POP3</td></tr>
+    <tr><td>1194</td><td>UDP</td><td>OpenVPN</td><td>VPN service</td></tr>
+    <tr><td>1433</td><td>TCP</td><td>MSSQL</td><td>Microsoft SQL Server</td></tr>
+    <tr><td>1434</td><td>UDP</td><td>MSSQL Browser</td><td>SQL Server discovery</td></tr>
+    <tr><td>1521</td><td>TCP</td><td>Oracle DB</td><td>Oracle database</td></tr>
+    <tr><td>1701</td><td>UDP</td><td>L2TP</td><td>VPN tunneling</td></tr>
+    <tr><td>1720</td><td>TCP</td><td>H.323</td><td>VoIP/video conferencing</td></tr>
+    <tr><td>1723</td><td>TCP</td><td>PPTP</td><td>VPN tunneling</td></tr>
+    <tr><td>1812</td><td>UDP</td><td>RADIUS Authentication</td><td>AAA authentication</td></tr>
+    <tr><td>1813</td><td>UDP</td><td>RADIUS Accounting</td><td>AAA accounting</td></tr>
+    <tr><td>2049</td><td>TCP/UDP</td><td>NFS</td><td>Network File System</td></tr>
+    <tr><td>3306</td><td>TCP</td><td>MySQL</td><td>MySQL database</td></tr>
+    <tr><td>3389</td><td>TCP</td><td>RDP</td><td>Remote Desktop</td></tr>
+    <tr><td>5060</td><td>UDP/TCP</td><td>SIP</td><td>VoIP signaling</td></tr>
+    <tr><td>5061</td><td>TCP</td><td>SIP TLS</td><td>Secure VoIP signaling</td></tr>
+    <tr><td>5432</td><td>TCP</td><td>PostgreSQL</td><td>PostgreSQL database</td></tr>
+    <tr><td>5900</td><td>TCP</td><td>VNC</td><td>Remote desktop sharing</td></tr>
+    <tr><td>8080</td><td>TCP</td><td>HTTP Alternate</td><td>Alternative web traffic</td></tr>
+    <tr><td>8443</td><td>TCP</td><td>HTTPS Alternate</td><td>Alternative secure web traffic</td></tr>
+  </tbody>
+</table>
             <tbody id="portsTable"></tbody>
           </table>
         </div>
 
         <div class="panel">
           <h3>🧩 Must-Know Acronyms</h3>
-          <div class="acronyms" id="acronyms"></div>
-        </div>
+          <div class="acronyms-container">
+
+  <div class="acronym-card"><strong>ACL</strong><span>Access Control List</span></div>
+  <div class="acronym-card"><strong>AES</strong><span>Advanced Encryption Standard</span></div>
+  <div class="acronym-card"><strong>AP</strong><span>Access Point</span></div>
+  <div class="acronym-card"><strong>APIPA</strong><span>Automatic Private IP Addressing</span></div>
+  <div class="acronym-card"><strong>ARP</strong><span>Address Resolution Protocol</span></div>
+  <div class="acronym-card"><strong>BGP</strong><span>Border Gateway Protocol</span></div>
+  <div class="acronym-card"><strong>BPDU</strong><span>Bridge Protocol Data Unit</span></div>
+  <div class="acronym-card"><strong>BYOD</strong><span>Bring Your Own Device</span></div>
+  <div class="acronym-card"><strong>CAM</strong><span>Content Addressable Memory</span></div>
+  <div class="acronym-card"><strong>CIDR</strong><span>Classless Inter-Domain Routing</span></div>
+  <div class="acronym-card"><strong>CLI</strong><span>Command Line Interface</span></div>
+  <div class="acronym-card"><strong>DDoS</strong><span>Distributed Denial of Service</span></div>
+  <div class="acronym-card"><strong>DHCP</strong><span>Dynamic Host Configuration Protocol</span></div>
+  <div class="acronym-card"><strong>DNS</strong><span>Domain Name System</span></div>
+  <div class="acronym-card"><strong>DoS</strong><span>Denial of Service</span></div>
+  <div class="acronym-card"><strong>EIGRP</strong><span>Enhanced Interior Gateway Routing Protocol</span></div>
+  <div class="acronym-card"><strong>EMI</strong><span>Electromagnetic Interference</span></div>
+  <div class="acronym-card"><strong>ESP</strong><span>Encapsulating Security Payload</span></div>
+  <div class="acronym-card"><strong>FHRP</strong><span>First Hop Redundancy Protocol</span></div>
+  <div class="acronym-card"><strong>FTP</strong><span>File Transfer Protocol</span></div>
+  <div class="acronym-card"><strong>FTPS</strong><span>File Transfer Protocol Secure</span></div>
+  <div class="acronym-card"><strong>GRE</strong><span>Generic Routing Encapsulation</span></div>
+  <div class="acronym-card"><strong>GUI</strong><span>Graphical User Interface</span></div>
+  <div class="acronym-card"><strong>HA</strong><span>High Availability</span></div>
+  <div class="acronym-card"><strong>HTTP</strong><span>Hypertext Transfer Protocol</span></div>
+  <div class="acronym-card"><strong>HTTPS</strong><span>Hypertext Transfer Protocol Secure</span></div>
+  <div class="acronym-card"><strong>IaaS</strong><span>Infrastructure as a Service</span></div>
+  <div class="acronym-card"><strong>ICMP</strong><span>Internet Control Message Protocol</span></div>
+  <div class="acronym-card"><strong>IDS</strong><span>Intrusion Detection System</span></div>
+  <div class="acronym-card"><strong>IMAP</strong><span>Internet Message Access Protocol</span></div>
+  <div class="acronym-card"><strong>IP</strong><span>Internet Protocol</span></div>
+  <div class="acronym-card"><strong>IPAM</strong><span>IP Address Management</span></div>
+  <div class="acronym-card"><strong>IPS</strong><span>Intrusion Prevention System</span></div>
+  <div class="acronym-card"><strong>IPsec</strong><span>Internet Protocol Security</span></div>
+  <div class="acronym-card"><strong>IPv4</strong><span>Internet Protocol Version 4</span></div>
+  <div class="acronym-card"><strong>IPv6</strong><span>Internet Protocol Version 6</span></div>
+  <div class="acronym-card"><strong>ISP</strong><span>Internet Service Provider</span></div>
+  <div class="acronym-card"><strong>LAN</strong><span>Local Area Network</span></div>
+  <div class="acronym-card"><strong>LACP</strong><span>Link Aggregation Control Protocol</span></div>
+  <div class="acronym-card"><strong>LDAP</strong><span>Lightweight Directory Access Protocol</span></div>
+  <div class="acronym-card"><strong>MAC</strong><span>Media Access Control</span></div>
+  <div class="acronym-card"><strong>MAN</strong><span>Metropolitan Area Network</span></div>
+  <div class="acronym-card"><strong>MFA</strong><span>Multi-Factor Authentication</span></div>
+  <div class="acronym-card"><strong>MPLS</strong><span>Multiprotocol Label Switching</span></div>
+  <div class="acronym-card"><strong>NAC</strong><span>Network Access Control</span></div>
+  <div class="acronym-card"><strong>NAT</strong><span>Network Address Translation</span></div>
+  <div class="acronym-card"><strong>NFV</strong><span>Network Function Virtualization</span></div>
+  <div class="acronym-card"><strong>NIC</strong><span>Network Interface Card</span></div>
+  <div class="acronym-card"><strong>NTP</strong><span>Network Time Protocol</span></div>
+  <div class="acronym-card"><strong>OSI</strong><span>Open Systems Interconnection</span></div>
+  <div class="acronym-card"><strong>OSPF</strong><span>Open Shortest Path First</span></div>
+  <div class="acronym-card"><strong>PaaS</strong><span>Platform as a Service</span></div>
+  <div class="acronym-card"><strong>PAN</strong><span>Personal Area Network</span></div>
+  <div class="acronym-card"><strong>PAT</strong><span>Port Address Translation</span></div>
+  <div class="acronym-card"><strong>PBQ</strong><span>Performance-Based Question</span></div>
+  <div class="acronym-card"><strong>PKI</strong><span>Public Key Infrastructure</span></div>
+  <div class="acronym-card"><strong>PoE</strong><span>Power over Ethernet</span></div>
+  <div class="acronym-card"><strong>POP3</strong><span>Post Office Protocol v3</span></div>
+  <div class="acronym-card"><strong>PPTP</strong><span>Point-to-Point Tunneling Protocol</span></div>
+  <div class="acronym-card"><strong>QoS</strong><span>Quality of Service</span></div>
+  <div class="acronym-card"><strong>RADIUS</strong><span>Remote Authentication Dial-In User Service</span></div>
+  <div class="acronym-card"><strong>RDP</strong><span>Remote Desktop Protocol</span></div>
+  <div class="acronym-card"><strong>RIP</strong><span>Routing Information Protocol</span></div>
+  <div class="acronym-card"><strong>RPO</strong><span>Recovery Point Objective</span></div>
+  <div class="acronym-card"><strong>RTO</strong><span>Recovery Time Objective</span></div>
+  <div class="acronym-card"><strong>SaaS</strong><span>Software as a Service</span></div>
+  <div class="acronym-card"><strong>SASE</strong><span>Secure Access Service Edge</span></div>
+  <div class="acronym-card"><strong>SDN</strong><span>Software Defined Networking</span></div>
+  <div class="acronym-card"><strong>SD-WAN</strong><span>Software Defined Wide Area Network</span></div>
+  <div class="acronym-card"><strong>SFTP</strong><span>Secure File Transfer Protocol</span></div>
+  <div class="acronym-card"><strong>SIEM</strong><span>Security Information and Event Management</span></div>
+  <div class="acronym-card"><strong>SIP</strong><span>Session Initiation Protocol</span></div>
+  <div class="acronym-card"><strong>SMB</strong><span>Server Message Block</span></div>
+  <div class="acronym-card"><strong>SMTP</strong><span>Simple Mail Transfer Protocol</span></div>
+  <div class="acronym-card"><strong>SNMP</strong><span>Simple Network Management Protocol</span></div>
+  <div class="acronym-card"><strong>SOHO</strong><span>Small Office/Home Office</span></div>
+  <div class="acronym-card"><strong>SSH</strong><span>Secure Shell</span></div>
+  <div class="acronym-card"><strong>SSID</strong><span>Service Set Identifier</span></div>
+  <div class="acronym-card"><strong>SSL</strong><span>Secure Sockets Layer</span></div>
+  <div class="acronym-card"><strong>STP</strong><span>Spanning Tree Protocol</span></div>
+  <div class="acronym-card"><strong>TCP</strong><span>Transmission Control Protocol</span></div>
+  <div class="acronym-card"><strong>TFTP</strong><span>Trivial File Transfer Protocol</span></div>
+  <div class="acronym-card"><strong>TLS</strong><span>Transport Layer Security</span></div>
+  <div class="acronym-card"><strong>UDP</strong><span>User Datagram Protocol</span></div>
+  <div class="acronym-card"><strong>UPS</strong><span>Uninterruptible Power Supply</span></div>
+  <div class="acronym-card"><strong>UTM</strong><span>Unified Threat Management</span></div>
+  <div class="acronym-card"><strong>UTP</strong><span>Unshielded Twisted Pair</span></div>
+  <div class="acronym-card"><strong>VLAN</strong><span>Virtual Local Area Network</span></div>
+  <div class="acronym-card"><strong>VM</strong><span>Virtual Machine</span></div>
+  <div class="acronym-card"><strong>VoIP</strong><span>Voice over IP</span></div>
+  <div class="acronym-card"><strong>VPN</strong><span>Virtual Private Network</span></div>
+  <div class="acronym-card"><strong>VRRP</strong><span>Virtual Router Redundancy Protocol</span></div>
+  <div class="acronym-card"><strong>WAN</strong><span>Wide Area Network</span></div>
+  <div class="acronym-card"><strong>WAP</strong><span>Wireless Access Point</span></div>
+  <div class="acronym-card"><strong>WEP</strong><span>Wired Equivalent Privacy</span></div>
+  <div class="acronym-card"><strong>WLAN</strong><span>Wireless Local Area Network</span></div>
+  <div class="acronym-card"><strong>WPA2</strong><span>Wi-Fi Protected Access 2</span></div>
+  <div class="acronym-card"><strong>WPA3</strong><span>Wi-Fi Protected Access 3</span></div>
+
+</div>
 
         <div class="panel" id="osi">
           <h3>🌐 OSI Model Quick View</h3>
