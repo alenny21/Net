@@ -672,7 +672,153 @@
       { domain: "Domain 3", q: "Why is NTP important?", a: "NTP keeps device clocks synchronized. This matters for logs, authentication, troubleshooting, and security investigations." },
       { domain: "Domain 5", q: "What should you check first when there is no network connection?", a: "Start simple: physical layer. Check cable, Wi-Fi connection, NIC status, link lights, and whether the device has a valid IP address." },
       { domain: "Domain 1", q: "What is the OSI model used for?", a: "The OSI model helps explain how data moves through a network and helps troubleshoot networking problems layer by layer." },
+{ domain: "Domain 1", q: "What is unicast traffic?", a: "Unicast is one-to-one communication. One device sends data to one specific device." },
 
+{ domain: "Domain 1", q: "What is broadcast traffic?", a: "Broadcast is one-to-all communication. One device sends data to every device in the local broadcast domain." },
+
+{ domain: "Domain 1", q: "What is multicast traffic?", a: "Multicast is one-to-many communication. Data is sent only to devices that joined a specific group." },
+
+{ domain: "Domain 1", q: "What is anycast traffic?", a: "Anycast sends traffic to the nearest available destination from a group of possible destinations." },
+
+{ domain: "Domain 1", q: "What is loopback?", a: "Loopback tests the local TCP/IP stack. The common loopback address is 127.0.0.1." },
+
+{ domain: "Domain 1", q: "What are the private IPv4 ranges?", a: "10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16." },
+
+{ domain: "Domain 1", q: "What does CIDR mean?", a: "CIDR means Classless Inter-Domain Routing. It uses slash notation like /24 to show the network prefix." },
+
+{ domain: "Domain 1", q: "What is VLSM?", a: "Variable Length Subnet Masking lets you use different subnet sizes within the same network." },
+
+{ domain: "Domain 1", q: "What is SaaS?", a: "Software as a Service. The provider manages the application, platform, and infrastructure. Example: Gmail or Microsoft 365." },
+
+{ domain: "Domain 1", q: "What is IaaS?", a: "Infrastructure as a Service. The provider gives virtualized infrastructure, but you manage the OS, apps, and data." },
+
+{ domain: "Domain 1", q: "What is PaaS?", a: "Platform as a Service. The provider manages the infrastructure and platform; you focus on the application." },
+
+{ domain: "Domain 1", q: "What is SD-WAN?", a: "Software-defined WAN uses centralized policies to route traffic across multiple WAN links." },
+
+{ domain: "Domain 1", q: "What is zero trust?", a: "Zero trust means never trust automatically. Always verify users, devices, and access requests." },
+
+{ domain: "Domain 2", q: "What is an access port?", a: "An access port carries traffic for one VLAN and is usually used for end devices like PCs or printers." },
+
+{ domain: "Domain 2", q: "What is a trunk port?", a: "A trunk port carries traffic for multiple VLANs using VLAN tagging, usually between switches." },
+
+{ domain: "Domain 2", q: "What is 802.1Q?", a: "802.1Q is the VLAN tagging standard used on trunk links." },
+
+{ domain: "Domain 2", q: "What is the native VLAN?", a: "The native VLAN carries untagged traffic on a trunk port. It should match on both sides of the trunk." },
+
+{ domain: "Domain 2", q: "What is inter-VLAN routing?", a: "Inter-VLAN routing allows devices in different VLANs to communicate using a Layer 3 device." },
+
+{ domain: "Domain 2", q: "What is router-on-a-stick?", a: "Router-on-a-stick uses one router interface with subinterfaces to route between multiple VLANs." },
+
+{ domain: "Domain 2", q: "What is OSPF?", a: "OSPF is a link-state dynamic routing protocol that uses cost as its metric." },
+
+{ domain: "Domain 2", q: "What is RIP?", a: "RIP is a distance-vector routing protocol that uses hop count and has a maximum of 15 hops." },
+
+{ domain: "Domain 2", q: "What is BGP?", a: "BGP is a path-vector routing protocol used mainly for routing between autonomous systems on the internet." },
+
+{ domain: "Domain 2", q: "What is administrative distance?", a: "Administrative distance tells a router which route source is more trusted. Lower values are preferred." },
+
+{ domain: "Domain 2", q: "What is link aggregation?", a: "Link aggregation combines multiple physical links into one logical link for redundancy and more bandwidth." },
+
+{ domain: "Domain 2", q: "What is port security?", a: "Port security limits which MAC addresses can connect to a switch port." },
+
+{ domain: "Domain 2", q: "What is BPDU Guard?", a: "BPDU Guard shuts down a port if it receives unexpected STP BPDU messages, helping protect against loops." },
+
+{ domain: "Domain 2", q: "What is PortFast?", a: "PortFast lets an access port skip normal STP waiting states and start forwarding faster." },
+
+{ domain: "Domain 2", q: "What is an SSID?", a: "An SSID is the wireless network name users see when connecting to Wi-Fi." },
+
+{ domain: "Domain 2", q: "What is a BSSID?", a: "A BSSID is the MAC address of a wireless access point radio." },
+
+{ domain: "Domain 2", q: "What is WPA2-Enterprise?", a: "WPA2-Enterprise uses 802.1X and RADIUS for per-user wireless authentication." },
+
+{ domain: "Domain 2", q: "What is plenum cable?", a: "Plenum cable is fire-resistant cable used in air-handling spaces like ceilings." },
+
+{ domain: "Domain 2", q: "Single-mode fiber vs multimode fiber?", a: "Single-mode fiber is for long distances and uses laser light. Multimode fiber is for shorter distances and usually uses LED light." },
+
+{ domain: "Domain 3", q: "What is IPAM?", a: "IP Address Management tracks IP addresses, subnets, and address assignments." },
+
+{ domain: "Domain 3", q: "What is a network baseline?", a: "A baseline is a record of normal network behavior used to identify unusual performance or security issues." },
+
+{ domain: "Domain 3", q: "What is configuration management?", a: "Configuration management tracks device settings and changes so systems stay consistent and recoverable." },
+
+{ domain: "Domain 3", q: "What is change management?", a: "Change management is the process of planning, approving, testing, and documenting changes." },
+
+{ domain: "Domain 3", q: "What is a cold site?", a: "A cold site is a backup location with basic infrastructure but no ready-to-run systems." },
+
+{ domain: "Domain 3", q: "What is a warm site?", a: "A warm site has some systems and data ready, but it still needs setup before full operation." },
+
+{ domain: "Domain 3", q: "What is a full backup?", a: "A full backup copies all selected data." },
+
+{ domain: "Domain 3", q: "What is an incremental backup?", a: "An incremental backup copies only data changed since the last backup." },
+
+{ domain: "Domain 3", q: "What is a differential backup?", a: "A differential backup copies data changed since the last full backup." },
+
+{ domain: "Domain 3", q: "What is high availability?", a: "High availability keeps services running with minimal downtime, often using redundancy or failover." },
+
+{ domain: "Domain 3", q: "What is load balancing?", a: "Load balancing spreads traffic across multiple servers to improve performance and availability." },
+
+{ domain: "Domain 3", q: "What is a DHCP scope?", a: "A DHCP scope is a range of IP addresses a DHCP server can assign to clients." },
+
+{ domain: "Domain 3", q: "What is a DHCP reservation?", a: "A DHCP reservation gives the same IP address to a device based on its MAC address." },
+
+{ domain: "Domain 3", q: "What is an A record?", a: "An A record maps a domain name to an IPv4 address." },
+
+{ domain: "Domain 3", q: "What is an AAAA record?", a: "An AAAA record maps a domain name to an IPv6 address." },
+
+{ domain: "Domain 3", q: "What is an MX record?", a: "An MX record identifies mail servers for a domain." },
+
+{ domain: "Domain 3", q: "What is a PTR record?", a: "A PTR record maps an IP address back to a hostname for reverse DNS lookup." },
+
+{ domain: "Domain 4", q: "What is AAA?", a: "AAA stands for Authentication, Authorization, and Accounting." },
+
+{ domain: "Domain 4", q: "Authentication vs authorization?", a: "Authentication proves who you are. Authorization determines what you are allowed to access." },
+
+{ domain: "Domain 4", q: "What is least privilege?", a: "Least privilege gives users only the access they need to do their job, nothing extra." },
+
+{ domain: "Domain 4", q: "What is network segmentation?", a: "Network segmentation separates networks to reduce risk, improve performance, and limit attack spread." },
+
+{ domain: "Domain 4", q: "What is a DMZ?", a: "A DMZ is a separate network zone for public-facing services, placed between the internet and internal network." },
+
+{ domain: "Domain 4", q: "What is ARP poisoning?", a: "ARP poisoning tricks devices into sending traffic to the attacker by lying about MAC-to-IP mappings." },
+
+{ domain: "Domain 4", q: "What is DNS poisoning?", a: "DNS poisoning corrupts DNS answers so users are sent to the wrong or malicious IP address." },
+
+{ domain: "Domain 4", q: "What is an evil twin attack?", a: "An evil twin is a fake Wi-Fi access point that looks legitimate to trick users into connecting." },
+
+{ domain: "Domain 4", q: "What is a rogue DHCP server?", a: "A rogue DHCP server gives clients incorrect IP settings, often redirecting traffic through an attacker." },
+
+{ domain: "Domain 4", q: "What is DDoS?", a: "Distributed Denial of Service uses many systems to overwhelm a target and make it unavailable." },
+
+{ domain: "Domain 4", q: "What is PKI?", a: "Public Key Infrastructure manages digital certificates and public/private key trust." },
+
+{ domain: "Domain 4", q: "What is a certificate?", a: "A certificate proves identity and helps create trusted encrypted connections." },
+
+{ domain: "Domain 4", q: "What is RADIUS?", a: "RADIUS provides centralized authentication, often used with VPNs, Wi-Fi, and 802.1X." },
+
+{ domain: "Domain 5", q: "What does nslookup troubleshoot?", a: "nslookup helps troubleshoot DNS resolution problems." },
+
+{ domain: "Domain 5", q: "What does netstat show?", a: "netstat shows active network connections, listening ports, and related network statistics." },
+
+{ domain: "Domain 5", q: "What does arp -a show?", a: "arp -a displays the local ARP table, showing IP-to-MAC address mappings." },
+
+{ domain: "Domain 5", q: "What does show interface help check?", a: "show interface helps check interface status, errors, speed, duplex, and traffic statistics." },
+
+{ domain: "Domain 5", q: "What does show ip route show?", a: "show ip route displays the routing table." },
+
+{ domain: "Domain 5", q: "What does show mac address-table show?", a: "It shows learned MAC addresses and the switch ports where they were learned." },
+
+{ domain: "Domain 5", q: "What is a cable tester used for?", a: "A cable tester checks cable continuity, wiring faults, shorts, opens, and incorrect pinouts." },
+
+{ domain: "Domain 5", q: "What is a toner probe used for?", a: "A toner probe helps trace and identify cables." },
+
+{ domain: "Domain 5", q: "What is a loopback plug used for?", a: "A loopback plug tests whether a network port or interface can send and receive signals." },
+
+{ domain: "Domain 5", q: "What is a duplex mismatch?", a: "A duplex mismatch happens when two connected devices use different duplex settings, causing errors and poor performance." },
+
+{ domain: "Domain 5", q: "What causes an IP conflict?", a: "An IP conflict happens when two devices use the same IP address on the same network." },
+
+{ domain: "Domain 5", q: "What should you check if DNS fails but ping by IP works?", a: "Check DNS server settings, DNS records, DNS reachability, and local DNS cache." }
 { domain: "Domain 1", q: "What does DNS do?", a: "DNS converts domain names like google.com into IP addresses." },
 
 { domain: "Domain 1", q: "What is the difference between TCP and UDP?", a: "TCP is reliable and connection-oriented. UDP is faster but connectionless and unreliable." },
