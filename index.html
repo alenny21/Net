@@ -633,7 +633,129 @@
     text-decoration: none;
     backdrop-filter: blur(12px);
   }
+/* FUN + ORGANIZED UPGRADES */
 
+.hero-card {
+  padding: 28px;
+  border-radius: 28px;
+  background:
+    radial-gradient(circle at top left, rgba(34,211,238,.25), transparent 35%),
+    radial-gradient(circle at bottom right, rgba(236,72,153,.20), transparent 35%),
+    linear-gradient(145deg, rgba(15,23,42,.86), rgba(2,8,23,.72));
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: var(--shadow);
+  margin-bottom: 20px;
+}
+
+.focus-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 18px 0 24px;
+}
+
+.focus-pill {
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.10);
+}
+
+.focus-pill strong {
+  display: block;
+  color: var(--cyan);
+  margin-bottom: 4px;
+}
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(34,211,238,.12);
+  border: 1px solid rgba(34,211,238,.25);
+  color: #67e8f9;
+  font-size: .82rem;
+  font-weight: 900;
+  margin-bottom: 12px;
+}
+
+details {
+  margin-bottom: 12px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.045);
+}
+
+summary {
+  cursor: pointer;
+  padding: 13px 15px;
+  font-weight: 900;
+  color: white;
+  list-style: none;
+  background: linear-gradient(90deg, rgba(168,85,247,.18), rgba(34,211,238,.10));
+}
+
+summary::after {
+  content: " +";
+  float: right;
+  color: var(--cyan);
+}
+
+details[open] summary::after {
+  content: " −";
+}
+
+details table {
+  margin: 8px 0 12px;
+}
+
+.panel {
+  position: relative;
+  overflow: hidden;
+}
+
+.panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255,255,255,.08), transparent 35%);
+  opacity: .55;
+}
+
+.panel > * {
+  position: relative;
+}
+
+.action-card {
+  border-top: 3px solid var(--glow);
+}
+
+.action-card h3 {
+  color: white;
+}
+
+.flashcard h2 {
+  color: #e0f2fe;
+}
+
+.mini-controls button {
+  background: linear-gradient(135deg, rgba(59,130,246,.35), rgba(168,85,247,.28));
+}
+
+.quick-list li {
+  margin-bottom: 6px;
+}
+
+@media (max-width: 900px) {
+  .focus-strip {
+    grid-template-columns: 1fr;
+  }
+}
   @media (max-width: 1100px) {
     .shell {
       grid-template-columns: 1fr;
@@ -725,17 +847,37 @@
     </aside>
 
     <main id="home">
-      <section class="topbar">
-        <div>
-          <h1><span class="gradient-text">CompTIA</span> <span style="color: var(--cyan)">Network+</span></h1>
-          <p class="subtitle">N10-009 Study Hub — learn, practice, review, and stop letting subnetting bully you.</p>
-        </div>
-        <div class="icon-actions">
-          <button class="icon-btn" title="Dark mode">🌙</button>
-          <button class="icon-btn" title="Theme">🎨</button>
-          <button class="icon-btn" title="Fullscreen">⛶</button>
-        </div>
-      </section>
+     <section class="hero-card">
+  <div class="section-tag">🚀 Network+ Study Dashboard</div>
+
+  <section class="topbar">
+    <div>
+      <h1><span class="gradient-text">CompTIA</span> <span style="color: var(--cyan)">Network+</span></h1>
+      <p class="subtitle">N10-009 Study Hub — learn, practice, review, and stop letting subnetting bully you.</p>
+    </div>
+
+    <div class="icon-actions">
+      <button class="icon-btn" title="Dark mode">🌙</button>
+      <button class="icon-btn" title="Theme">🎨</button>
+      <button class="icon-btn" title="Fullscreen">⛶</button>
+    </div>
+  </section>
+
+  <div class="focus-strip">
+    <div class="focus-pill">
+      <strong>Today’s Focus</strong>
+      Ports, acronyms, subnetting
+    </div>
+    <div class="focus-pill">
+      <strong>Exam Priority</strong>
+      Troubleshooting is 24%
+    </div>
+    <div class="focus-pill">
+      <strong>Smart Move</strong>
+      Do quiz mode before flashcards
+    </div>
+  </div>
+</section>
 
 <section class="actions">
   <div class="action-card" onclick="location.href='#flashcards'" style="--glow: var(--blue)">
@@ -763,7 +905,8 @@
   </div>
 </section>
 
-      <section id="domains" class="card panel">
+     <section id="domains" class="card panel">
+  <div class="section-tag">📚 Exam Map</div>
         <div class="section-head">
           <h2>🧠 Domains</h2>
           <p>Based on N10-009 exam weighting</p>
