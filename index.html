@@ -777,8 +777,8 @@
         </div>
       </section>
 
- <section class="grid-3">
-  <div class="panel" id="ports">
+<section class="grid-3">
+  <div class="panel" id="ports" style="grid-column: span 2;">
     <h3>🎯 Common Ports (Organized)</h3>
 
     <!-- FILE TRANSFER -->
@@ -944,40 +944,43 @@
     </details>
 
   </div>
-</section>
-        <div class="panel" id="acronym-section">
-  <h3>🧩 Acronym Flashcards</h3>
+
+  <div class="panel" id="acronym-section">
+    <h3>🧩 Acronym Flashcards</h3>
 
   <div class="flashcard" id="acronymCard" onclick="flipAcronymCard()">
-    <div class="flashcard-top">
-      <span>Acronym Practice</span>
-      <small id="acronymCount">1 / 1</small>
+      <div class="flashcard-top">
+        <span>Acronym Practice</span>
+        <small id="acronymCount">1 / 1</small>
+      </div>
+
+      <h2 id="acronymQuestion">ACL</h2>
+      <p id="acronymAnswer" class="hidden-answer">Access Control List</p>
+      <small class="flashHint">Click card to reveal meaning</small>
     </div>
 
-    <h2 id="acronymQuestion">ACL</h2>
-    <p id="acronymAnswer" class="hidden-answer">Access Control List</p>
-    <small class="flashHint">Click card to reveal meaning</small>
+    <div class="mini-controls">
+      <button type="button" onclick="prevAcronymCard(event)">← Previous</button>
+      <button type="button" onclick="flipAcronymCard(event)">Flip</button>
+      <button type="button" onclick="nextAcronymCard(event)">Next →</button>
+    </div>
   </div>
+</section>
 
-  <div class="mini-controls">
-    <button type="button" onclick="prevAcronymCard(event)">← Previous</button>
-    <button type="button" onclick="flipAcronymCard(event)">Flip</button>
-    <button type="button" onclick="nextAcronymCard(event)">Next →</button>
+<section class="bottom-grid">
+  <div class="panel" id="osi">
+    <h3>🌐 OSI Model Quick View</h3>
+    <div class="osi">
+      <div class="osi-row"><b>7</b><div>Application<br><span>HTTP, DNS, SMTP — user-facing apps</span></div></div>
+      <div class="osi-row"><b>6</b><div>Presentation<br><span>Encryption, compression, formatting</span></div></div>
+      <div class="osi-row"><b>5</b><div>Session<br><span>Starts, manages, ends sessions</span></div></div>
+      <div class="osi-row"><b>4</b><div>Transport<br><span>TCP/UDP, ports, reliability</span></div></div>
+      <div class="osi-row"><b>3</b><div>Network<br><span>IP addressing, routing, packets</span></div></div>
+      <div class="osi-row"><b>2</b><div>Data Link<br><span>MAC addresses, frames, switches</span></div></div>
+      <div class="osi-row"><b>1</b><div>Physical<br><span>Cables, signals, bits, hubs</span></div></div>
+    </div>
   </div>
-</div>
-        <div class="panel" id="osi">
-          <h3>🌐 OSI Model Quick View</h3>
-          <div class="osi">
-            <div class="osi-row"><b>7</b><div>Application<br><span>HTTP, DNS, SMTP — user-facing apps</span></div></div>
-            <div class="osi-row"><b>6</b><div>Presentation<br><span>Encryption, compression, formatting</span></div></div>
-            <div class="osi-row"><b>5</b><div>Session<br><span>Starts, manages, ends sessions</span></div></div>
-            <div class="osi-row"><b>4</b><div>Transport<br><span>TCP/UDP, ports, reliability</span></div></div>
-            <div class="osi-row"><b>3</b><div>Network<br><span>IP addressing, routing, packets</span></div></div>
-            <div class="osi-row"><b>2</b><div>Data Link<br><span>MAC addresses, frames, switches</span></div></div>
-            <div class="osi-row"><b>1</b><div>Physical<br><span>Cables, signals, bits, hubs</span></div></div>
-          </div>
-        </div>
-      </section>
+</section>
 
       <section class="bottom-grid" id="flashcards">
         <div class="panel" style="grid-column: span 2;">
