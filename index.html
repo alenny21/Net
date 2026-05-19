@@ -383,6 +383,73 @@
       margin: 16px 0 28px;
     }
 
+    .flashcard {
+      min-height: 260px;
+      padding: 22px;
+      border-radius: 22px;
+      background: radial-gradient(circle at top left, rgba(34,211,238,.22), transparent 38%), linear-gradient(145deg, rgba(15,23,42,.82), rgba(2,8,23,.75));
+      border: 1px solid rgba(34,211,238,.25);
+      cursor: pointer;
+      transition: .25s ease;
+    }
+
+    .flashcard:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(34,211,238,.12); }
+
+    .flashcard-top, .quiz-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      color: var(--muted);
+      margin-bottom: 14px;
+      font-weight: 800;
+    }
+
+    .flashcard h2, .quiz-question {
+      margin: 0 0 14px;
+      font-size: clamp(1.35rem, 3vw, 2rem);
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+    }
+
+    .hidden-answer {
+      display: none;
+      color: #d1fae5;
+      line-height: 1.6;
+      font-size: 1rem;
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.12);
+    }
+
+    .flashcard.revealed .hidden-answer { display: block; }
+    .flashHint { color: var(--muted); display: block; margin-top: 18px; }
+
+    .mini-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .mini-controls button, .choice-btn {
+      border: 1px solid var(--border);
+      background: rgba(15,23,42,.78);
+      color: white;
+      border-radius: 14px;
+      padding: 11px 14px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+    .mini-controls button:hover, .choice-btn:hover { transform: translateY(-2px); border-color: rgba(34,211,238,.45); }
+
+    .choices { display: grid; gap: 10px; margin-top: 14px; }
+    .choice-btn { width: 100%; text-align: left; }
+    .choice-btn.correct { background: rgba(34,197,94,.22); border-color: rgba(34,197,94,.7); }
+    .choice-btn.wrong { background: rgba(244,63,94,.22); border-color: rgba(244,63,94,.7); }
+    .quiz-feedback { color: var(--muted); min-height: 26px; font-weight: 800; }
+
     .quick-list { margin: 0; padding-left: 20px; color: white; line-height: 1.75; }
     code { color: #86efac; }
 
@@ -426,6 +493,8 @@
         <a href="#home" class="active">🏠 Home</a>
         <a href="#domains">📚 Domains</a>
         <a href="#ports">🎯 Ports</a>
+        <a href="#flashcards">🃏 Flashcards</a>
+        <a href="#quiz">🧠 Quiz</a>
         <a href="#osi">🌐 OSI Model</a>
         <a href="#subnetting">🧮 Subnetting</a>
         <a href="#commands">🛠 Commands</a>
@@ -511,6 +580,41 @@
         </div>
       </section>
 
+      <section class="bottom-grid" id="flashcards">
+        <div class="panel" style="grid-column: span 2;">
+          <h3>🃏 Flashcards</h3>
+          <div class="flashcard" id="flashcard" onclick="flipFlashcard()">
+            <div class="flashcard-top">
+              <span id="flashDomain">Domain 1</span>
+              <small id="flashCount">1 / 6</small>
+            </div>
+            <h2 id="flashQuestion">What does DHCP do?</h2>
+            <p id="flashAnswer" class="hidden-answer">DHCP automatically gives devices IP settings like IP address, subnet mask, default gateway, and DNS server.</p>
+            <small class="flashHint">Click card to reveal answer</small>
+          </div>
+          <div class="mini-controls">
+            <button onclick="prevFlashcard(event)">← Previous</button>
+            <button onclick="flipFlashcard(event)">Flip</button>
+            <button onclick="nextFlashcard(event)">Next →</button>
+          </div>
+        </div>
+
+        <div class="panel" id="quiz">
+          <h3>🧠 Quick Quiz</h3>
+          <div class="quiz-meta">
+            <span id="quizProgress">Question 1 / 5</span>
+            <span id="quizScore">Score: 0</span>
+          </div>
+          <h2 class="quiz-question" id="quizQuestion">Which port does HTTPS use?</h2>
+          <div class="choices" id="quizChoices"></div>
+          <p id="quizFeedback" class="quiz-feedback">Pick the best answer.</p>
+          <div class="mini-controls">
+            <button onclick="nextQuiz()">Next Question →</button>
+            <button onclick="resetQuiz()">Reset Quiz</button>
+          </div>
+        </div>
+      </section>
+
       <section class="bottom-grid">
         <div class="panel" id="commands">
           <h3>🛠 Handy Commands</h3>
@@ -560,6 +664,96 @@
   <a href="#home" class="backtop">↑ Back to Top</a>
 
   <script>
+    const flashcards = [
+      { domain: "Domain 1", q: "What does DHCP do?", a: "DHCP automatically gives devices IP settings like IP address, subnet mask, default gateway, and DNS server." },
+      { domain: "Domain 1", q: "What does APIPA mean?", a: "APIPA is 169.254.0.0/16. A device gives itself this address when it cannot reach DHCP. It only works locally." },
+      { domain: "Domain 2", q: "What is a VLAN?", a: "A VLAN separates a switch into logical networks. Each VLAN is its own broadcast domain." },
+      { domain: "Domain 2", q: "What does STP prevent?", a: "Spanning Tree Protocol prevents Layer 2 switching loops by blocking redundant paths." },
+      { domain: "Domain 3", q: "Why is NTP important?", a: "NTP keeps device clocks synchronized. This matters for logs, authentication, troubleshooting, and security investigations." },
+      { domain: "Domain 5", q: "What should you check first when there is no network connection?", a: "Start simple: physical layer. Check cable, Wi-Fi connection, NIC status, link lights, and whether the device has a valid IP address." }
+    ];
+
+    const quizQuestions = [
+      { q: "Which port does HTTPS use?", choices: ["80", "443", "53", "3389"], answer: "443", explain: "HTTPS uses TCP 443 for secure web traffic." },
+      { q: "A 169.254.x.x address usually means what?", choices: ["DNS failed", "DHCP failed", "Router is down", "Port 443 is blocked"], answer: "DHCP failed", explain: "169.254.x.x is APIPA, usually assigned when DHCP cannot be reached." },
+      { q: "Which device forwards traffic using MAC addresses?", choices: ["Router", "Switch", "Firewall", "Modem"], answer: "Switch", explain: "Switches operate mainly at Layer 2 and forward frames using MAC addresses." },
+      { q: "Which protocol prevents switching loops?", choices: ["OSPF", "STP", "NTP", "SNMP"], answer: "STP", explain: "STP blocks redundant Layer 2 paths to prevent loops." },
+      { q: "Which command tests basic connectivity?", choices: ["ping", "nslookup", "ipconfig", "show vlan brief"], answer: "ping", explain: "ping uses ICMP to test whether another host responds." }
+    ];
+
+    let currentFlash = 0;
+    let currentQuiz = 0;
+    let score = 0;
+    let answered = false;
+
+    function renderFlashcard() {
+      const card = flashcards[currentFlash];
+      document.getElementById("flashcard").classList.remove("revealed");
+      document.getElementById("flashDomain").textContent = card.domain;
+      document.getElementById("flashCount").textContent = `${currentFlash + 1} / ${flashcards.length}`;
+      document.getElementById("flashQuestion").textContent = card.q;
+      document.getElementById("flashAnswer").textContent = card.a;
+    }
+
+    function flipFlashcard(event) {
+      if (event) event.stopPropagation();
+      document.getElementById("flashcard").classList.toggle("revealed");
+    }
+
+    function nextFlashcard(event) {
+      event.stopPropagation();
+      currentFlash = (currentFlash + 1) % flashcards.length;
+      renderFlashcard();
+    }
+
+    function prevFlashcard(event) {
+      event.stopPropagation();
+      currentFlash = (currentFlash - 1 + flashcards.length) % flashcards.length;
+      renderFlashcard();
+    }
+
+    function renderQuiz() {
+      answered = false;
+      const item = quizQuestions[currentQuiz];
+      document.getElementById("quizProgress").textContent = `Question ${currentQuiz + 1} / ${quizQuestions.length}`;
+      document.getElementById("quizScore").textContent = `Score: ${score}`;
+      document.getElementById("quizQuestion").textContent = item.q;
+      document.getElementById("quizFeedback").textContent = "Pick the best answer.";
+      document.getElementById("quizChoices").innerHTML = item.choices.map(choice =>
+        `<button class="choice-btn" onclick="checkAnswer(this, '${choice.replace(/'/g, "\'")}')">${choice}</button>`
+      ).join("");
+    }
+
+    function checkAnswer(button, choice) {
+      if (answered) return;
+      answered = true;
+      const item = quizQuestions[currentQuiz];
+      const buttons = document.querySelectorAll(".choice-btn");
+      buttons.forEach(btn => {
+        if (btn.textContent === item.answer) btn.classList.add("correct");
+      });
+      if (choice === item.answer) {
+        score++;
+        button.classList.add("correct");
+        document.getElementById("quizFeedback").textContent = `Correct. ${item.explain}`;
+      } else {
+        button.classList.add("wrong");
+        document.getElementById("quizFeedback").textContent = `Not quite. ${item.explain}`;
+      }
+      document.getElementById("quizScore").textContent = `Score: ${score}`;
+    }
+
+    function nextQuiz() {
+      currentQuiz = (currentQuiz + 1) % quizQuestions.length;
+      renderQuiz();
+    }
+
+    function resetQuiz() {
+      currentQuiz = 0;
+      score = 0;
+      renderQuiz();
+    }
+
     const ports = [
       ["20/21", "TCP", "FTP", "File transfer"],
       ["22", "TCP", "SSH/SFTP", "Secure shell/file transfer"],
@@ -616,6 +810,9 @@
     document.getElementById("acronyms").innerHTML = Object.entries(acronyms)
       .map(([key, value]) => `<b>${key}</b><span>${value}</span>`)
       .join("");
+
+    renderFlashcard();
+    renderQuiz();
   </script>
 </body>
 </html>
