@@ -670,7 +670,80 @@
       { domain: "Domain 2", q: "What is a VLAN?", a: "A VLAN separates a switch into logical networks. Each VLAN is its own broadcast domain." },
       { domain: "Domain 2", q: "What does STP prevent?", a: "Spanning Tree Protocol prevents Layer 2 switching loops by blocking redundant paths." },
       { domain: "Domain 3", q: "Why is NTP important?", a: "NTP keeps device clocks synchronized. This matters for logs, authentication, troubleshooting, and security investigations." },
-      { domain: "Domain 5", q: "What should you check first when there is no network connection?", a: "Start simple: physical layer. Check cable, Wi-Fi connection, NIC status, link lights, and whether the device has a valid IP address." }
+      { domain: "Domain 5", q: "What should you check first when there is no network connection?", a: "Start simple: physical layer. Check cable, Wi-Fi connection, NIC status, link lights, and whether the device has a valid IP address." },
+      { domain: "Domain 1", q: "What is the OSI model used for?", a: "The OSI model helps explain how data moves through a network and helps troubleshoot networking problems layer by layer." },
+
+{ domain: "Domain 1", q: "What does DNS do?", a: "DNS converts domain names like google.com into IP addresses." },
+
+{ domain: "Domain 1", q: "What is the difference between TCP and UDP?", a: "TCP is reliable and connection-oriented. UDP is faster but connectionless and unreliable." },
+
+{ domain: "Domain 1", q: "What is a MAC address?", a: "A MAC address is the physical hardware address assigned to a network interface card." },
+
+{ domain: "Domain 1", q: "What device works mainly at Layer 2?", a: "A switch works mainly at Layer 2 using MAC addresses." },
+
+{ domain: "Domain 1", q: "What device works mainly at Layer 3?", a: "A router works mainly at Layer 3 using IP addresses." },
+
+{ domain: "Domain 1", q: "What is APIPA?", a: "APIPA is a self-assigned address in the 169.254.x.x range used when DHCP cannot be reached." },
+
+{ domain: "Domain 1", q: "What is the purpose of subnetting?", a: "Subnetting divides networks into smaller sections to improve efficiency and reduce broadcasts." },
+
+{ domain: "Domain 1", q: "What does NAT do?", a: "NAT translates private IP addresses into public IP addresses." },
+
+{ domain: "Domain 1", q: "What is a default gateway?", a: "The default gateway is the router a device uses to communicate outside its local network." },
+
+{ domain: "Domain 2", q: "What is a VLAN?", a: "A VLAN separates devices into different logical networks on the same switch." },
+
+{ domain: "Domain 2", q: "What does STP do?", a: "STP prevents Layer 2 switching loops by blocking redundant paths." },
+
+{ domain: "Domain 2", q: "What is trunking?", a: "Trunking allows multiple VLANs to travel across one connection using 802.1Q tagging." },
+
+{ domain: "Domain 2", q: "What is PoE?", a: "Power over Ethernet allows devices like access points and IP phones to receive power through Ethernet cables." },
+
+{ domain: "Domain 2", q: "What is LACP?", a: "LACP combines multiple physical links into one logical connection for redundancy and speed." },
+
+{ domain: "Domain 2", q: "What wireless band has less interference?", a: "5 GHz usually has less interference than 2.4 GHz." },
+
+{ domain: "Domain 2", q: "What is WPA3?", a: "WPA3 is a modern wireless security standard that improves encryption and authentication." },
+
+{ domain: "Domain 3", q: "What is NTP?", a: "NTP synchronizes device clocks across a network." },
+
+{ domain: "Domain 3", q: "What is SNMP used for?", a: "SNMP is used to monitor and manage network devices." },
+
+{ domain: "Domain 3", q: "What is Syslog?", a: "Syslog is a logging protocol used to collect logs from network devices." },
+
+{ domain: "Domain 3", q: "What is a hot site?", a: "A hot site is a fully operational backup location used during disasters." },
+
+{ domain: "Domain 3", q: "What does RPO mean?", a: "Recovery Point Objective is the maximum amount of acceptable data loss." },
+
+{ domain: "Domain 3", q: "What does RTO mean?", a: "Recovery Time Objective is the maximum acceptable downtime." },
+
+{ domain: "Domain 4", q: "What is a firewall?", a: "A firewall filters network traffic based on security rules." },
+
+{ domain: "Domain 4", q: "What is phishing?", a: "Phishing is a social engineering attack used to trick users into giving sensitive information." },
+
+{ domain: "Domain 4", q: "What is MFA?", a: "Multi-factor authentication requires multiple forms of verification before access is granted." },
+
+{ domain: "Domain 4", q: "What is a VPN?", a: "A VPN creates an encrypted tunnel across a public network." },
+
+{ domain: "Domain 4", q: "What is MAC flooding?", a: "MAC flooding overloads a switch CAM table so traffic gets broadcasted." },
+
+{ domain: "Domain 4", q: "What is an IDS?", a: "An IDS detects suspicious activity and alerts administrators." },
+
+{ domain: "Domain 4", q: "What is an IPS?", a: "An IPS actively blocks malicious traffic." },
+
+{ domain: "Domain 5", q: "What command checks connectivity?", a: "ping checks basic connectivity using ICMP." },
+
+{ domain: "Domain 5", q: "What command traces packet paths?", a: "tracert or traceroute shows the path packets take across a network." },
+
+{ domain: "Domain 5", q: "What command checks DNS resolution?", a: "nslookup checks DNS name resolution." },
+
+{ domain: "Domain 5", q: "What is the first troubleshooting step?", a: "Identify the problem." },
+
+{ domain: "Domain 5", q: "What should you check first for no internet?", a: "Check physical connectivity, IP configuration, and the default gateway." },
+
+{ domain: "Domain 5", q: "What does ipconfig do?", a: "ipconfig displays IP configuration information on Windows devices." },
+
+{ domain: "Domain 5", q: "What does show vlan brief do?", a: "It displays VLAN information on Cisco switches." },
     ];
 
     const quizQuestions = [
@@ -678,7 +751,143 @@
       { q: "A 169.254.x.x address usually means what?", choices: ["DNS failed", "DHCP failed", "Router is down", "Port 443 is blocked"], answer: "DHCP failed", explain: "169.254.x.x is APIPA, usually assigned when DHCP cannot be reached." },
       { q: "Which device forwards traffic using MAC addresses?", choices: ["Router", "Switch", "Firewall", "Modem"], answer: "Switch", explain: "Switches operate mainly at Layer 2 and forward frames using MAC addresses." },
       { q: "Which protocol prevents switching loops?", choices: ["OSPF", "STP", "NTP", "SNMP"], answer: "STP", explain: "STP blocks redundant Layer 2 paths to prevent loops." },
-      { q: "Which command tests basic connectivity?", choices: ["ping", "nslookup", "ipconfig", "show vlan brief"], answer: "ping", explain: "ping uses ICMP to test whether another host responds." }
+      { q: "Which command tests basic connectivity?", choices: ["ping", "nslookup", "ipconfig", "show vlan brief"], answer: "ping", explain: "ping uses ICMP to test whether another host responds." },
+      { q: "Which protocol automatically assigns IP addresses?",
+  choices: ["DNS", "DHCP", "SNMP", "SSH"],
+  answer: "DHCP",
+  explain: "DHCP automatically assigns IP addresses and network settings."
+},
+      {
+  q: "Which port does SSH use?",
+  choices: ["21", "22", "23", "25"],
+  answer: "22",
+  explain: "SSH uses TCP port 22 for secure remote access."
+},
+
+{
+  q: "Which device forwards traffic using MAC addresses?",
+  choices: ["Router", "Switch", "Firewall", "Access Point"],
+  answer: "Switch",
+  explain: "Switches use MAC addresses to forward traffic at Layer 2."
+},
+
+{
+  q: "Which protocol prevents switching loops?",
+  choices: ["DNS", "NTP", "STP", "SMTP"],
+  answer: "STP",
+  explain: "Spanning Tree Protocol prevents Layer 2 loops."
+},
+
+{
+  q: "What does DNS do?",
+  choices: ["Assigns IP addresses", "Encrypts traffic", "Resolves names to IPs", "Blocks malware"],
+  answer: "Resolves names to IPs",
+  explain: "DNS converts domain names into IP addresses."
+},
+
+{
+  q: "Which port does HTTPS use?",
+  choices: ["80", "22", "443", "3389"],
+  answer: "443",
+  explain: "HTTPS uses TCP port 443."
+},
+
+{
+  q: "What type of address is 169.254.x.x?",
+  choices: ["Public", "Loopback", "APIPA", "Multicast"],
+  answer: "APIPA",
+  explain: "APIPA addresses are self-assigned when DHCP fails."
+},
+
+{
+  q: "Which layer of the OSI model uses IP addresses?",
+  choices: ["Layer 2", "Layer 3", "Layer 4", "Layer 7"],
+  answer: "Layer 3",
+  explain: "The Network layer uses IP addressing."
+},
+
+{
+  q: "Which command checks connectivity?",
+  choices: ["ping", "ipconfig", "nslookup", "show vlan"],
+  answer: "ping",
+  explain: "ping uses ICMP to test connectivity."
+},
+
+{
+  q: "Which protocol is connection-oriented?",
+  choices: ["UDP", "ICMP", "TCP", "ARP"],
+  answer: "TCP",
+  explain: "TCP establishes a connection before transmitting data."
+},
+
+{
+  q: "Which protocol is faster but unreliable?",
+  choices: ["TCP", "UDP", "SSH", "HTTPS"],
+  answer: "UDP",
+  explain: "UDP is connectionless and faster but unreliable."
+},
+
+{
+  q: "What does NAT do?",
+  choices: ["Blocks malware", "Resolves DNS", "Translates IP addresses", "Encrypts traffic"],
+  answer: "Translates IP addresses",
+  explain: "NAT converts private IP addresses into public IP addresses."
+},
+
+{
+  q: "Which wireless band has more range?",
+  choices: ["5 GHz", "6 GHz", "2.4 GHz", "Bluetooth"],
+  answer: "2.4 GHz",
+  explain: "2.4 GHz travels farther but has more interference."
+},
+
+{
+  q: "What does VLAN stand for?",
+  choices: ["Virtual Local Area Network", "Variable LAN", "Virtual Layer Access Node", "Verified LAN"],
+  answer: "Virtual Local Area Network",
+  explain: "VLAN stands for Virtual Local Area Network."
+},
+
+{
+  q: "Which protocol synchronizes time?",
+  choices: ["DNS", "NTP", "DHCP", "FTP"],
+  answer: "NTP",
+  explain: "NTP synchronizes clocks across devices."
+},
+
+{
+  q: "Which protocol is used for secure web browsing?",
+  choices: ["HTTP", "HTTPS", "FTP", "Telnet"],
+  answer: "HTTPS",
+  explain: "HTTPS encrypts web traffic using TLS/SSL."
+},
+
+{
+  q: "What does PoE provide?",
+  choices: ["Wireless internet", "Power through Ethernet", "VPN access", "DNS security"],
+  answer: "Power through Ethernet",
+  explain: "PoE delivers electrical power over Ethernet cables."
+},
+
+{
+  q: "Which protocol is used for email sending?",
+  choices: ["SMTP", "POP3", "IMAP", "SNMP"],
+  answer: "SMTP",
+  explain: "SMTP is used to send email."
+},
+
+{
+  q: "What is the purpose of a firewall?",
+  choices: ["Assign IP addresses", "Monitor clocks", "Filter traffic", "Resolve DNS"],
+  answer: "Filter traffic",
+  explain: "Firewalls allow or block traffic based on rules."
+},
+{
+  q: "Which troubleshooting step comes first?",
+  choices: ["Test theory", "Document findings", "Identify the problem", "Implement solution"],
+  answer: "Identify the problem",
+  explain: "The first troubleshooting step is identifying the problem."
+},
     ];
 
     let currentFlash = 0;
